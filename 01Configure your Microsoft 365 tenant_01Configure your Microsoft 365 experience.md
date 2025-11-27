@@ -163,7 +163,162 @@ A fully configured tenant includes:
 - Intune device management
 - Entra tenant with:
   - Synchronized accounts
-  - 
+  - Domains
+  - Conditional Access policies
+  - (Groups and objects also exist but not shown)
+
+# Configure Your Microsoft 365 Organizational Profile
+
+Completing your organization's profile is a critical first step when setting up a Microsoft Entra tenant.  
+Some required fields (such as **Address line**) can halt the provisioning process if left incomplete.
+
+> **Important**  
+> Only users with the **Global Administrator** role can update the organization profile.
+
+---
+
+## Edit Your Organization Profile
+
+Follow these steps to modify your organization’s profile:
+
+1. Go to the **Microsoft 365 admin center**.
+2. In the left navigation pane, select **Show all** (ellipsis `...`).
+3. Select **Settings > Org settings**.
+4. Open the **Organization profile** tab.
+5. Choose the appropriate group (e.g., *Custom themes*, *Organization information*).
+6. Edit the settings and **Save**.
+7. Repeat for all groups as needed.
+
+### Organization Information Group
+
+This section contains your basic company information:
+- Organization name  
+- Address  
+- Phone number  
+- Preferred language  
+- Country/Region  
+
+---
+
+## Preferred Language Warning
+
+- Determines the language for **all Microsoft communications**.
+- At signup, it also sets the default language for **SharePoint Online**.
+- Changing it later:
+  - ✔️ Future emails from Microsoft use the new language  
+  - ❌ SharePoint Online **stays** in the original language (cannot be changed)
+
+---
+
+## Country/Region Warning
+
+- The **Country/Region** value **cannot be changed** after setup.
+- It determines:
+  - Available services
+  - Billing currency and taxes
+  - The Microsoft datacenter location supporting your tenant
+
+> **Important**  
+> If you enter the wrong country/region, the only fix is to **create a new account** and purchase a new subscription with the correct location.
+
+---
+
+# Update Your Organization’s Theme
+
+Microsoft 365 administrators can create:
+- **1 Default theme**
+- **Up to 4 custom themes**  
+  (assigned to Microsoft 365 Groups)
+
+Theme changes appear in the top navigation bar of the Microsoft 365 suite.
+
+### Steps to Create or Update a Theme
+
+1. Go to **Settings > Org settings**.
+2. Select the **Organization profile** tab.
+3. Choose **Custom themes**.
+4. To add a theme, select **Add theme**.
+5. Configure settings under the tabs:
+   - **General**
+   - **Logos**
+   - **Colors**
+
+---
+
+## General Tab
+
+### Default Theme
+- Cannot be renamed.
+- Applies to all users.
+- To delete the default theme, you must delete all other themes first.
+
+You can:
+- Prevent users from overriding their theme
+- Show user display names
+
+### Group Themes
+- Assigned to **Microsoft 365 Groups only**  
+  (not security groups, not distribution groups)
+- If a user belongs to multiple groups with themes, the **default theme** is used.
+
+Limits:
+- Total themes: **5** (1 default + 4 custom)
+- Each group theme can be assigned to **up to 5 Microsoft 365 groups**
+
+Only **Global Administrators** may customize themes.
+
+---
+
+## Logos Tab
+
+You can upload:
+- Default logo  
+- Alternate logo (optimized for dark mode)
+- On-click link URL
+
+### Requirements
+
+**Default Logo:**
+- HTTPS URL
+- Publicly accessible (no authentication)
+- File size < 10 KB
+- Formats: JPG, PNG, GIF, SVG  
+  - SVG resized to 24px height  
+  - JPG/PNG/GIF scaled to 200 × 48 px  
+  - Aspect ratio always preserved
+
+**Alternate Logo:**
+- Same requirements as default
+- Optimized for dark theme visibility
+
+**On-Click Link**
+- Optional  
+- If not provided → defaults to Microsoft 365 home page
+
+> If the logo fails to upload, the URL likely isn’t publicly accessible.
+
+### Contrast Ratio Note
+Microsoft recommends **4.5:1** contrast ratio, but you can override the warning and save anyway.
+
+### Responsive Behavior
+On smaller screen sizes or window widths, the logo may disappear to prioritize essential header elements.
+
+---
+
+## Colors Tab
+
+Customize colors for your organization theme.
+
+You can modify:
+- **Navigation bar color** (top header background)
+- **Text and icon color**
+- **Accent color**  
+  (used on links/buttons on light backgrounds—e.g., Outlook inbox, Microsoft 365 portal)
+
+You may also:
+- Reset to default colors
+
+---
 
 
   - Domains
