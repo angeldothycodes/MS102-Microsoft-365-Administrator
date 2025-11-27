@@ -163,6 +163,9 @@ A fully configured tenant includes:
 - Intune device management
 - Entra tenant with:
   - Synchronized accounts
+  - 
+
+
   - Domains
   - Conditional Access policies
   - (Groups and objects also exist but not shown)
