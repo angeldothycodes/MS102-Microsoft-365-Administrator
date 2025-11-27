@@ -103,4 +103,68 @@ During Microsoft 365 sign-up, Microsoft asks for:
 - Domain name
 
 Microsoft uses this to create the tenant, e.g.:
+https://contoso.onmicrosoft.com
 
+
+### Admin Access
+- Managed via **Microsoft 365 admin center**
+- Admins can configure:
+  - Users
+  - Licenses
+  - Domains
+  - Security settings
+
+### Additional Notes
+- A tenant can have **up to 900 domains**.
+- **One subscription → one tenant**
+- Multiple subscriptions → multiple tenants
+
+---
+
+## Attributes of a Well-Designed Microsoft Entra Tenant
+
+An organization must configure/manage:
+
+### **Products & Licensing**
+- Plans match organizational needs.
+- Enough licenses to cover all workers.
+
+### **Networking**
+- Correct **DNS domain names**.
+- Optimized traffic for:
+  - On-site workers
+  - VPN remote workers
+
+### **Identity Integration**
+If using on-premises AD DS:
+- Sync accounts, groups, and objects.
+- Ensure correct domain mapping to Exchange mailboxes.
+- Assign proper licenses.
+
+### **Identity & Access Management**
+- Require passwordless or MFA.
+- Use Conditional Access for security.
+
+### **Migration / Hybrid Configuration**
+- Move on-premises Office servers and data to the cloud or set up hybrid.
+
+### **Device Management**
+Using Intune or Basic Mobility:
+- Enroll/manage company devices.
+- Configure app management for personal devices.
+
+---
+
+## Example of a Complete Microsoft Entra Tenant Setup
+
+A fully configured tenant includes:
+- Microsoft 365 E5 + EMS E5 licenses
+- Productivity apps
+- Intune device management
+- Entra tenant with:
+  - Synchronized accounts
+  - Domains
+  - Conditional Access policies
+  - (Groups and objects also exist but not shown)
+
+<img width="1056" height="482" alt="image" src="https://github.com/user-attachments/assets/4959ff01-ddaa-43ea-9f67-82200021e600" />
