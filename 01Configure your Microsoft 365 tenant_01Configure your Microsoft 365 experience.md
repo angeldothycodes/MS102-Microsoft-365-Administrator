@@ -372,3 +372,149 @@ All the information about an organization's existing subscriptions, including bi
 - **Billing notifications**  
   Identifies who receives billing notifications and how each billing statement is delivered.
 
+
+# Integrate Microsoft 365 with Customer Engagement Apps
+
+One of the key responsibilities of a Microsoft 365 Administrator is managing the company tenant. Administrators must acquire and assign licenses such as Project Online, Visio, Scheduler, and Microsoft Stream. Sometimes, they must also purchase extra capabilities, such as Microsoft Purview eDiscovery (Premium).
+
+Integrating Microsoft 365 with customer engagement apps enhances CRM functions through:
+
+- Easier maintenance  
+- Broader availability  
+- Better coordination across devices  
+
+Microsoft 365 provides two mechanisms for integration:
+
+1. **Purchase services** (Microsoft 365 admin center)  
+2. **Azure Marketplace** (Azure portal)
+
+> **Note:** Azure Marketplace is outside the scope of this training, but included for visibility.
+
+---
+
+## Purchase Services Page (Microsoft 365 Admin Center)
+
+The **Purchase services** page is located under the **Billing** group. It displays add-on services and full suite options, many of which offer a 30-day trial.
+
+At the end of a trial, the subscription expires unless purchased. All features are available during the trial for evaluation.
+
+Organizations use this page for:
+
+### 1. Purchase new products
+Examples:  
+- Microsoft 365 Business Premium  
+- Microsoft 365 Business Standard  
+- Microsoft 365 Apps for Business  
+
+### 2. Add-on services  
+Examples:  
+- Microsoft Teams  
+- Power BI  
+- Project Online  
+
+### 3. Manage licenses  
+Tasks include:  
+- Adding or removing licenses  
+- Changing license quantity  
+- Assigning licenses to users  
+
+### 4. View purchase history  
+Shows:  
+- Date of purchase  
+- Service purchased  
+- Amount paid  
+
+### 5. Get product recommendations  
+Microsoft offers suggestions based on organizational needs.
+
+---
+
+## Product Comparison
+
+You can compare products by:
+
+1. Selecting the **Compare** checkbox for the products.  
+2. Selecting the **Compare** button.
+
+The comparison page includes:
+
+- **Product overview**
+- **Features comparison** (side-by-side)
+- **Pricing comparison**
+- **Technical specifications**
+- **Customer reviews**
+
+This helps organizations evaluate and select the most suitable product.
+
+---
+
+## Assign Services
+
+Two ways to assign purchased services:
+
+1. Purchase the add-on → go to **Users** → assign license  
+2. Use the **Assign to** option after claiming the license
+
+---
+
+## Azure Marketplace (Azure Portal)
+
+Azure Marketplace enables IT admins to control third-party apps that users can deploy and purchase. Only approved apps can be deployed within the tenant.
+
+There are **two marketplaces**:
+
+### 1. Azure Marketplace
+- Open to all Azure users  
+- Thousands of apps (Compute, DevOps, AI, ML, etc.)  
+- Users can find, try, and buy apps  
+
+### 2. Private Azure Marketplace
+- Tenant-level governance  
+- Admins control which apps are approved  
+- Users can only deploy approved solutions  
+- Microsoft apps are automatically included  
+
+### What is a Collection?
+
+A **collection** is a list of approved products available across subscriptions.  
+The **Default Collection**:
+
+- Is created automatically  
+- Has tenant-wide scope  
+- Cannot be renamed or deleted  
+
+---
+
+## Azure Marketplace vs Private Azure Marketplace
+
+| Benefit | Azure Marketplace | Private Azure Marketplace |
+|--------|-------------------|---------------------------|
+| Discover Microsoft & partner apps | Yes | Yes |
+| Control deployment of partner (ISV) apps | Limited | Yes |
+| Control deployment at plan/SKU level | No | Yes |
+| Create custom collections for subscriptions | No | Yes |
+| Users can request admin approval | No | Yes |
+
+> **Note:**  
+> Apps from Microsoft and endorsed Linux vendors are always approved. Only ISV apps can be controlled via Private Azure Marketplace.
+
+---
+
+## Steps to Create a Private Azure Marketplace
+
+1. Assign the **Marketplace Admin** role  
+2. Create the private Azure Marketplace (initially disabled, includes Default Collection)  
+3. Customize collections (add approved apps)  
+4. Enable the private Azure Marketplace  
+
+After creation, Microsoft and endorsed Linux apps are included automatically.
+
+> **Important:**  
+> Private Azure Marketplace is **tenant-level**. Once enabled, it applies to all users. Collections help manage approvals at the **subscription level**.
+
+---
+
+## Additional Reading
+
+- Add-ons and services  
+- Govern and control using Private Azure Marketplace
