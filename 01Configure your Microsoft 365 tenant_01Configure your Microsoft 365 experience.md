@@ -326,3 +326,49 @@ You may also:
   - (Groups and objects also exist but not shown)
 
 <img width="1056" height="482" alt="image" src="https://github.com/user-attachments/assets/4959ff01-ddaa-43ea-9f67-82200021e600" />
+
+
+
+# Manage your tenant subscriptions in Microsoft 365
+
+Maintaining minimum subscription requirements is essential for an organization to remain functional. Purchasing an insufficient number of licenses can result in implementation delays, while purchasing an excessive number of licenses can result in overspending.
+
+The following screenshot is an example from a tenant with group-based licensing. In this case, all available licenses are already assigned. This situation results in provisioning errors due to the depleted licenses.
+
+> Screenshot from a tenant with group-based licensing and a provisioning error due to depleted licenses.
+
+All active and deprovisioned licenses can be reviewed from the Microsoft 365 admin center. In the left-hand navigation pane, select **Billing** → **Licenses**.  
+On the **Licenses** page, select the **Subscriptions** tab.
+
+<img width="1051" height="339" alt="image" src="https://github.com/user-attachments/assets/a97add78-a96e-43ab-b5b1-cbd0261c3ace" />
+
+An administrator can use this page to assign and remove licenses to user accounts. Extra licenses can also be purchased from here.
+
+> **Note:** Purchasing extra licenses changes the monthly billing date for those specific licenses.  
+> Example: If the main subscription was purchased on **May 14** and another purchase was completed on **May 15**, the next billing cycle would show subscriptions with due dates of **June 15** and **June 16**, respectively.
+
+All the information about an organization's existing subscriptions, including billing and payment information, is available within the **Billing** group in the Microsoft 365 admin center. This group includes the following pages:
+
+### Billing Pages
+
+- **Purchase services**  
+  Enables an organization to compare up to three products at a time and start purchases.
+
+- **Your products**  
+  Displays all the plans purchased by an organization. These plans can be maintained from here.
+
+- **Licenses**  
+  Provides a summary of subscribed licenses for each plan, including available license counts.
+
+- **Bills and payments**  
+  Shows a history of all invoices charged to the organization, payment methods, and billing profiles.
+
+- **Billing accounts**  
+  Manages the organization's purchasing relationship with Microsoft—address, contact details, tax information, and agreements.
+
+- **Payment methods**  
+  Enables defining payment methods for subscription purchases.
+
+- **Billing notifications**  
+  Identifies who receives billing notifications and how each billing statement is delivered.
+
