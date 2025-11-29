@@ -653,3 +653,60 @@ Choose the default link behavior for your organization:
 > Viewer history includes past data even if the feature is turned off and then back on.
 
 
+
+# Configure Tenant-Level Settings for Microsoft Teams
+
+As a Microsoft 365 administrator, you can configure organization-level tenant settings in Microsoft Teams. These settings affect how users and guests access and use Teams features.
+
+---
+
+## Organization-Level Settings Overview
+
+| Setting | Description |
+|---------|-------------|
+| **Guest access** | Enable or disable guest access. Guests can participate in chats, calls, meetings, and channels but have limited access to other resources. Control domains and feature access for guests. |
+| **Teams upgrade** | Control the transition from Skype for Business to Teams. Options: Islands, Teams Only, Skype for Business Only, etc. Determines which app is used for chat, calls, and meetings. |
+| **Teams settings** | Customize app setup, meetings, messaging, live events, voice, and device policies. Each policy defines permissions and user experience. |
+| **Teams apps** | Manage which apps users can access. Approve, upload, block, or uninstall apps. Create **app permission policies** (allow/block) and **app setup policies** (pinned/default apps). |
+| **Teams analytics and reports** | Monitor usage and performance. Reports include user activity, device usage, live event usage, and call quality. |
+
+---
+
+## Teams Meeting Settings
+
+Teams meeting settings are divided into:
+
+- **Meeting policy settings** – control user experience and permissions per meeting  
+- **Meeting configuration settings** – apply to all meetings organization-wide  
+
+### Meeting Policy Settings
+
+Meeting policies can be assigned to users, groups, or the entire organization. Key settings include:
+
+- **Allow scheduling private meetings** – schedule meetings not published to channels with specific invitees.  
+- **Allow Meet Now in channels** – start instant meetings in channels.  
+- **Allow channel meeting scheduling** – schedule meetings published to channels.  
+- **Allow IP video** – enable users to share video during meetings.  
+- **Allow screen sharing** – enable sharing of screen or app windows.  
+- **Allow transcription** – enable real-time audio transcript.  
+- **Allow cloud recording** – record and store meetings in the cloud.  
+- **Allow live captions** – show real-time captions.  
+- **Media bit rate (Kbps)** – set maximum data rate for audio/video traffic.  
+- **Allow live events** – enable creation/hosting of large-scale events (up to 10,000 attendees).  
+
+---
+
+### Meeting Configuration Settings
+
+Configuration settings apply to all meetings in the organization:
+
+- **Designated presenter role mode** – Who can be a presenter: Everyone, Organization, Organization + federated, or Organizer only.  
+- **Who can bypass the lobby** – Options: Everyone, Organization, Organization + federated, Organization + trusted, People I invite, Only me.  
+- **Announce when callers join or leave** – Play sound when participants join/leave.  
+- **Allow dial-in users to bypass the lobby** – Dial-in users join without waiting.  
+- **Automatically admit people** – Auto-admit options: Everyone, Organization, Organization + federated, Organization + trusted.  
+- **Allow anonymous users to join a meeting** – Enable non-signed-in users to join with a name.  
+- **Allow users to chat privately** – Send private messages during meetings.  
+- **Allow users to send reactions** – Send emoji reactions like thumbs up or heart.  
+- **Allow users to view shared notes** – Access meeting notes during and after meetings.  
+
