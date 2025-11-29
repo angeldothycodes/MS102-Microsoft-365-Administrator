@@ -518,3 +518,138 @@ After creation, Microsoft and endorsed Linux apps are included automatically.
 
 - Add-ons and services  
 - Govern and control using Private Azure Marketplace
+  
+
+# Configure Tenant-Level Sharing Settings for SharePoint and OneDrive
+
+SharePoint and OneDrive are cloud-based platforms used to store, share, and collaborate on files and folders in Microsoft 365. Their external sharing features allow users to share content with people outside the organization (partners, vendors, clients, customers). Sharing also works across multiple Microsoft 365 subscriptions.
+
+> **Tip:**  
+> External sharing is turned on by default. You may want to turn it off globally first until your organization decides how to use it.
+
+This section focuses on **organization-level sharing settings**.  
+For site-level sharing, see **Change sharing settings for a site**.  
+For OneDrive user-level sharing, see **Change the external sharing setting for a user's OneDrive**.
+
+---
+
+## Organization-Level External Sharing Settings
+
+SharePoint has sharing settings at:
+- **Organization level**
+- **Site level**
+
+To allow **any** site to share externally, you must first enable it **at the organization level**.  
+OneDrive sharing can be the same or **more restrictive** than SharePoint.
+
+Only **Global admins** and **SharePoint admins** can configure these settings.
+
+### How to Access the Sharing Page
+
+1. In the **Microsoft 365 admin center**, go to **Admin centers → SharePoint**.  
+2. In the SharePoint admin center, select **Policies → Sharing**.
+
+You will find these sections:
+
+- External sharing  
+- More external sharing settings  
+- File and folder links  
+- Advanced settings for Anyone links  
+- Other settings  
+
+---
+
+## External Sharing Options
+
+> **Important:**  
+> Microsoft Entra external collaboration settings impact who can invite guests.
+
+SharePoint and OneDrive offer **four main sharing options**:
+
+| Option | Description |
+|-------|-------------|
+| **Anyone** | Allows sharing via unauthenticated links. Allows site sharing with guests who authenticate. Supports link expiration and view-only restrictions. Required for file requests. |
+| **New and existing guests** | Requires guests to sign in using a Microsoft account or verification code. Guests not yet in the directory are added after sign-in. |
+| **Existing guests** | Allows sharing only with guests already in your directory. |
+| **Only people in your organization** | Disables external sharing entirely. |
+
+> **Note:**  
+> Even if organization-level sharing allows external sharing, new sites may not allow it by default.
+
+### Best Practice
+Store confidential information in **sites with external sharing turned off**.
+
+---
+
+## More External Sharing Settings
+
+This section allows more granular control.
+
+### Options
+
+- **Limit external sharing by domain**  
+  - Allow or block up to **5000 domains** (format: `domain.com`).  
+  - Can also be configured via PowerShell (`Set-SPOTenant`).
+
+- **Allow only specific security groups to share externally**
+
+- **Guests must sign in using the same account invitations were sent to**
+
+- **Allow guests to share items they don't own**
+
+- **Guest access expiration**  
+  Example: Access expires after X days unless renewed.
+
+- **Verification code reauthentication frequency**
+
+---
+
+## File and Folder Links (Default Link Type)
+
+Choose the default link behavior for your organization:
+
+- **Specific people**  
+  Most restrictive. Supports external sharing with specific users.
+
+- **Only people in your organization**  
+  Forwarded links work for any internal user.
+
+- **Anyone with the link**  
+  Only available if organization-level setting allows “Anyone”.  
+  Forwardable internally and externally, but cannot track who accessed files.
+
+> **Important:**  
+> If a site allows only authenticated guest sharing, the default becomes **Only people in your organization**, even if "Anyone" is set at the org level.
+
+---
+
+## Advanced Settings for “Anyone” Links
+
+- **Link expiration**  
+  Require expiration and set max number of days.
+
+- **Link permissions**  
+  - View only  
+  - View + Edit  
+  Required for **file requests**.
+
+---
+
+## Other Settings
+
+### Options
+
+- **Show owners the names of people who viewed their files in OneDrive**  
+  - Enabled by default.  
+  - Viewer info still recorded for auditing even if disabled.
+
+- **Allow site owners to display viewer names in SharePoint**  
+  - Enabled at org level by default, *off* at site level for existing sites.  
+  - Must be on at both levels.
+
+- **Use short links for sharing files and folders**
+
+> **Note:**  
+> Viewer history includes past data even if the feature is turned off and then back on.
+
+
