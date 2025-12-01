@@ -3,6 +3,9 @@
 To plan user identities, you must first understand the different types of Microsoft 365 user identities: **Cloud identities**, **Synchronized identities**, and **Federated identities**.  
 An organization can choose to maintain identities only in Microsoft 365 or integrate identities with its on-premises Active Directory.
 
+<img width="986" height="568" alt="image" src="https://github.com/user-attachments/assets/a651584b-553c-45fc-8317-8906473103b5" />
+
+
 ---
 
 ## Cloud Identities
