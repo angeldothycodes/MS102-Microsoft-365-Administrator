@@ -710,3 +710,47 @@ Configuration settings apply to all meetings in the organization:
 - **Allow users to send reactions** – Send emoji reactions like thumbs up or heart.  
 - **Allow users to view shared notes** – Access meeting notes during and after meetings.  
 
+
+
+# Complete your tenant configuration in Microsoft 365
+
+Finalizing your Microsoft 365 tenant configuration is a crucial step in ensuring a smooth transition for users and maintaining security and compliance. A well-structured checklist can help administrators verify that all necessary components are correctly configured and functioning.
+
+---
+
+## Common tasks for tenant configuration
+
+While specific configurations may vary depending on your organization's needs, the following are common steps to complete your Microsoft 365 tenant setup:
+
+- **User and Mailbox Migration:** Ensure all users are migrated and have fully functional mailboxes, with appropriate data migration where applicable.
+- **System Resources and Permissions:** Configure and assign necessary permissions to system resources.
+- **Domain Configuration:** Transfer and verify custom domains (vanity domains).
+- **Device Management:** Enroll Windows 10 and 11 devices into Microsoft Intune and configure co-management if using Microsoft Endpoint Configuration Manager.
+- **Mobile Device Governance:** Implement governance policies for mobile devices.
+- **DNS Records and Mail Flow:** Update and verify DNS records globally and configure policies to protect email communications.
+- **Identity Synchronization:** Set up and validate Microsoft Entra Connect Sync, if in use.
+- **Multifactor Authentication (MFA):** Enable MFA for added security.
+- **Security and Compliance Enhancements:** Implement Conditional Access policies, disable legacy authentication, and configure audit logging.
+- **Data Protection:** Configure Data Loss Prevention (DLP) policies and enable Azure Information Protection (AIP) to classify and protect sensitive information.
+- **Monitoring and Reporting:** Use tools such as Microsoft Secure Score to track and improve security configurations.
+- **Regular Security Reviews:** Review and update security settings and governance policies periodically.
+
+---
+
+## Verifying tenant readiness
+
+To confirm your Microsoft 365 environment is properly configured, use:
+
+- **Microsoft Remote Connectivity Analyzer:** Checks DNS records and mail flow settings.
+- **Microsoft Support and Recovery Assistant (SARA):** Diagnoses and resolves common connectivity issues.
+
+---
+
+## Other consideration: tenant-to-tenant migration
+
+> **Note:**  
+> Tenant-to-tenant migration refers to the process of transferring data and configurations from one Microsoft 365 tenant to another, commonly required during mergers, acquisitions, or business restructurings.  
+> Given the complexity and specialized nature of such migrations, they are out of scope for this training.  
+> For more details, please refer to the [Microsoft 365 tenant-to-tenant migrations article](https://learnrators can ensure a smooth and secure Microsoft 365 tenant setup by following a structured checklist and verifying key configurations. Regular reviews and proactive monitoring help maintain performance, security, and compliance.
+
+
