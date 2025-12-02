@@ -177,6 +177,7 @@ Many administrators prefer PowerShell for automation and bulk tasks.
 Install-Module Microsoft.Graph -Scope CurrentUser
 Import-Module Microsoft.Graph.Identity.DirectoryManagement
 Connect-MgGraph -Scopes 'User.ReadWrite.All'
+```
 
 
 # Create a New User
