@@ -486,3 +486,65 @@ $addLicenses = @(
 )
 
 Set-MgUserLicense -UserId "belinda@litwareinc.com" -AddLicenses $addLicenses -RemoveLicenses @()
+
+
+# Recover Deleted User Accounts in Microsoft 365
+
+When users leave an organization, their Microsoft 365 accounts must be deleted to maintain security.  
+Once an account is deleted:
+
+- The assigned Microsoft 365 license becomes available.
+- The user can no longer access Microsoft 365 services.
+- The account goes into a **30-day soft-deleted state** where it can still be restored.
+
+---
+
+## Deleting a User Account
+
+### Using the Microsoft 365 Admin Center
+
+1. Open the **Microsoft 365 admin center**.
+2. In the left navigation, select **Users > Active users**.
+3. Select the users you want to delete.
+4. Click **Delete user** in the menu bar.
+5. In the deletion pane, select **Delete users**.
+6. After deletion completes, select **Close**.
+
+---
+
+### Using Microsoft Graph PowerShell
+
+```powershell
+Remove-MgUser -UserId '5c442efb-5e66-484a-936a-91b6810bed14'
+```
+
+# Recover Deleted User Accounts in Microsoft 365
+
+When users leave an organization, their Microsoft 365 accounts must be deleted to maintain security.  
+Once an account is deleted:
+
+- The assigned Microsoft 365 license becomes available.
+- The user can no longer access Microsoft 365 services.
+- The account goes into a **30-day soft-deleted state** where it can still be restored.
+
+---
+
+## Deleting a User Account
+
+### Using the Microsoft 365 Admin Center
+
+1. Open the **Microsoft 365 admin center**.
+2. In the left navigation, select **Users > Active users**.
+3. Select the users you want to delete.
+4. Click **Delete user** in the menu bar.
+5. In the deletion pane, select **Delete users**.
+6. After deletion completes, select **Close**.
+
+---
+
+### Using Microsoft Graph PowerShell
+
+```powershell
+Remove-MgUser -UserId '5c442efb-5e66-484a-936a-91b6810bed14'
+```
+
