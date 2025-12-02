@@ -339,3 +339,150 @@ The admin center is the simplest interface.
   - Data retention settings  
   - Default storage space  
 
+
+
+# Manage User Licenses in Microsoft 365
+
+Microsoft paid cloud services, such as Microsoft 365, Enterprise Mobility + Security, Dynamics 365, and other similar products, require licenses. These licenses are assigned to each user who needs access to these services. To manage licenses, administrators use one of the management portals (Microsoft 365 or Azure) and PowerShell cmdlets. Microsoft Entra ID is the underlying infrastructure that supports identity management for all Microsoft Cloud services. Microsoft Entra ID stores information about license assignment states for users.
+
+One of the most basic tasks for Microsoft 365 Administrators is user management. To manage users, you must understand how to manage their licenses. Your organization’s users need licenses to use Microsoft 365 services, such as Microsoft Outlook and Microsoft SharePoint Online. When an administrator assigns a license to a user, the system automatically sets up the service for that user. For example, when you assign a SharePoint Online license to a user, the system assigns the user edit permissions on the default team site.
+
+Only members of the **Global admin** and **User Management admin** roles can assign or remove licenses.
+
+> **Important:**  
+> When an administrator removes a license from a user, the system deletes any service data associated with that user. You have a 30-day grace period to recover that data. After 30 days, the data is not recoverable.
+
+---
+
+## Viewing User License Information
+
+### View number of licenses remaining
+1. In the Microsoft 365 admin center, go to **Billing > Licenses**.  
+2. Under **Subscriptions**, view:
+   - Total available licenses  
+   - Assigned licenses  
+
+### View unlicensed users
+1. In the Microsoft 365 admin center, go to **Users > Active users**.  
+2. Select **Filter**.  
+3. Choose **Unlicensed users**.
+
+---
+
+## Assigning a License (Admin Center)
+
+Administrators can assign or remove licenses for one or multiple users.
+
+1. Go to **Users > Active users**.
+2. Select the users.
+3. Click **Manage product licenses** (or **More actions > Manage product licenses**).
+4. Choose one option:
+   - **Replace** — Remove existing licenses and assign new ones.
+   - **Assign more** — Keep existing and add more.
+   - **Unassign all** — Remove all licenses.
+
+---
+
+## Managing User Licenses with Microsoft Graph PowerShell
+
+Before assigning a license, the **UsageLocation** property must be set on the user account.
+
+### Required permissions
+- Assign/remove license: `User.ReadWrite.All` or similar
+- View tenant license info: `Organization.Read.All`
+
+### Connect to Microsoft Graph
+
+Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
+
+
+### View available licensing plans
+Get-MgSubscribedSku
+
+### Find unlicensed accounts
+Get-MgUser -Filter 'assignedLicenses/$count eq 0' -ConsistencyLevel eventual -CountVariable unlicensedUserCount -All
+
+
+### Find unlicensed synchronized users
+Get-MgUser -Filter 'assignedLicenses/$count eq 0 and OnPremisesSyncEnabled eq true' -ConsistencyLevel eventual -CountVariable unlicensedUserCount -All -Select UserPrincipalName
+
+
+### Find accounts without UsageLocation
+Get-MgUser -Select Id,DisplayName,Mail,UserPrincipalName,UsageLocation,UserType | where { $_.UsageLocation -eq $null -and $_.UserType -eq 'Member' }
+
+
+### Set UsageLocation
+
+$userUPN="<user sign-in name (UPN)>"
+$userLoc="<ISO 3166-1 alpha-2 country code>"
+
+Update-MgUser -UserId $userUPN -UsageLocation $userLoc
+
+### Example
+Update-MgUser -UserId "belindan@litwareinc.com" -UsageLocation US
+
+### Note:
+Without -All, Get-MgUser only returns the first 100 users.
+
+
+## Assigning Licenses via PowerShell
+
+### Basic license assignment
+Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = "<SkuId>"} -RemoveLicenses @()
+
+#### Example: Assign Microsoft 365 E5 license
+$e5Sku = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'SPE_E5'
+Set-MgUserLicense -UserId "belindan@litwareinc.com" -AddLicenses @{SkuId = $e5Sku.SkuId} -RemoveLicenses @()
+
+#### Example: Assign E5 + EMS E5
+
+$e5Sku = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'SPE_E5'
+$e5EmsSku = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'EMSPREMIUM'
+
+$addLicenses = @(
+    @{SkuId = $e5Sku.SkuId},
+    @{SkuId = $e5EmsSku.SkuId}
+)
+
+Set-MgUserLicense -UserId "belinda@litwareinc.com" -AddLicenses $addLicenses -RemoveLicenses @()
+
+
+#### Example: Assign E5 but disable Bookings + Customer Lockbox
+
+$e5Sku = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'SPE_E5'
+$disabledPlans = $e5Sku.ServicePlans |
+    Where ServicePlanName -in ("LOCKBOX_ENTERPRISE", "MICROSOFTBOOKINGS") |
+    Select -ExpandProperty ServicePlanId
+
+$addLicenses = @(
+    @{
+        SkuId = $e5Sku.SkuId
+        DisabledPlans = $disabledPlans
+    }
+)
+
+Set-MgUserLicense -UserId "belinda@litwareinc.com" -AddLicenses $addLicenses -RemoveLicenses @()
+
+#### Example: Keep existing disabled plans, disable Sway + Forms
+
+$userLicense = Get-MgUserLicenseDetail -UserId "belinda@litwareinc.com"
+$userDisabledPlans = $userLicense.ServicePlans |
+    Where ProvisioningStatus -eq "Disabled" |
+    Select -ExpandProperty ServicePlanId
+
+$e5Sku = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'SPE_E5'
+
+$newDisabledPlans = $e5Sku.ServicePlans |
+    Where ServicePlanName -in ("SWAY", "FORMS_PLAN_E5") |
+    Select -ExpandProperty ServicePlanId
+
+$disabledPlans = ($userDisabledPlans + $newDisabledPlans) | Select -Unique
+
+$addLicenses = @(
+    @{
+        SkuId = $e5Sku.SkuId
+        DisabledPlans = $disabledPlans
+    }
+)
+
+Set-MgUserLicense -UserId "belinda@litwareinc.com" -AddLicenses $addLicenses -RemoveLicenses @()
