@@ -518,33 +518,30 @@ Once an account is deleted:
 Remove-MgUser -UserId '5c442efb-5e66-484a-936a-91b6810bed14'
 ```
 
-# Recover Deleted User Accounts in Microsoft 365
+## Restoring a Deleted User Account
 
-When users leave an organization, their Microsoft 365 accounts must be deleted to maintain security.  
-Once an account is deleted:
-
-- The assigned Microsoft 365 license becomes available.
-- The user can no longer access Microsoft 365 services.
-- The account goes into a **30-day soft-deleted state** where it can still be restored.
+Deleted users become inactive but recoverable for **30 days**.  
+A restore operation simply reactivates the account.
 
 ---
 
-## Deleting a User Account
-
 ### Using the Microsoft 365 Admin Center
 
-1. Open the **Microsoft 365 admin center**.
-2. In the left navigation, select **Users > Active users**.
-3. Select the users you want to delete.
-4. Click **Delete user** in the menu bar.
-5. In the deletion pane, select **Delete users**.
-6. After deletion completes, select **Close**.
+1. Go to **Users > Deleted users**.
+2. Select the user to restore.
+3. Click **Restore user**.
+4. Choose a password assignment method.
+5. Select **Restore**.
 
 ---
 
 ### Using Microsoft Graph PowerShell
 
-```powershell
-Remove-MgUser -UserId '5c442efb-5e66-484a-936a-91b6810bed14'
-```
+**Notes:**
 
+- You can restore **users, groups, apps, service principals, and admin units**.
+- **Security groups cannot be restored** — deletion is permanent.
+
+```powershell
+Restore-MgDirectoryDeletedItem -DirectoryObjectId '5c442efb-5e66-484a-936a-91b6810bed14'
+```
