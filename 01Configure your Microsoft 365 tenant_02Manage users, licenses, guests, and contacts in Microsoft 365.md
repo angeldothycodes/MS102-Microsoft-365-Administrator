@@ -208,3 +208,133 @@ New-MgUser `
   -PasswordProfile $PasswordProfile `
   -AccountEnabled `
   -MailNickName 'AllanD'
+
+
+# Manage User Account Settings in Microsoft 365
+
+Organizations can manage Microsoft 365 user accounts immediately after subscription purchase. User accounts can be managed through:
+
+- **Microsoft 365 admin center**
+- **PowerShell**
+- **Directory synchronization** (Microsoft Entra Connect Sync or Cloud Sync)
+
+Identity model selection determines where accounts are managed:
+
+---
+
+## Identity Models
+
+### **Cloud-only**
+- Users are created and managed in:
+  - Microsoft 365 admin center  
+  - PowerShell  
+  - Microsoft Entra admin center  
+
+### **Hybrid**
+- Microsoft 365 synchronizes user accounts from **on-premises AD DS**
+- Accounts must be managed using AD DS tools
+
+---
+
+# Account Management Tools
+
+| Tool | Notes |
+|------|-------|
+| **Microsoft 365 admin center** | - Add users individually or in bulk<br>- Simple web interface<br>- Cannot modify synced accounts (only location & license)<br>- Not usable with SSO options |
+| **Windows PowerShell** | - Create accounts via scripts<br>- Supports bulk creation<br>- Can assign locations and licenses regardless of account origin |
+| **Bulk import (CSV)** | - Add many users at once<br>- CSV-based upload<br>- Not usable with SSO options |
+| **Microsoft Entra ID** | - Free edition included with Microsoft 365<br>- Supports SSPR for cloud-only users<br>- Enhanced functionality available via P1/P2 |
+| **Directory synchronization** | - Integrates on-prem identities with Microsoft Entra ID<br>- Required for SSO<br>- Required for hybrid Exchange, staged migrations<br>- Syncs mail-enabled/security groups<br>- Requires meeting AD DS attribute standards<br>- Installed on-premises servers |
+
+---
+
+# Important Notes
+
+If you create accounts **without assigning a license**, the user can access the Microsoft 365 admin center but **cannot use any services**.
+
+After assigning:
+- **Location**
+- **Licenses**
+
+The system replicates the account, and the user can sign in and access services.
+
+---
+
+# Manage User Accounts in Microsoft 365 Admin Center
+
+You can manage:
+
+- Administrator roles  
+- Sign-in status  
+- User locations  
+- Licenses  
+
+These settings can be modified through:
+
+- Microsoft 365 admin center  
+- PowerShell  
+
+The admin center is the simplest interface.
+
+---
+
+## Editing a User Account
+
+### Steps:
+
+1. Go to **Microsoft 365 admin center**.
+2. Select **Users > Active Users**.
+3. Select a user to open the **user account pane**, which contains these tabs:
+
+---
+
+## User Account Pane Tabs
+
+### **Account**
+- Modify:
+  - Username & aliases  
+  - Email addresses  
+  - Group membership  
+  - Roles  
+  - Contact info  
+- Manage:
+  - MFA  
+  - Sign-out from all sessions  
+- View:
+  - Sign-in history (30 days)  
+  - Microsoft 365 app activations  
+
+---
+
+### **Devices**
+- Displays devices enrolled in Intune.
+
+---
+
+### **Licenses and Apps**
+- Modify assigned licenses  
+- Set user location  
+- Customize available apps  
+
+---
+
+### **Mail**
+- Modify:
+  - Mailbox permissions  
+  - Forwarding  
+  - Automatic replies  
+  - GAL visibility  
+  - Litigation hold  
+  - Exchange properties  
+  - Email apps  
+
+---
+
+### **OneDrive**
+- Access user’s files  
+- View storage quota  
+- Manage external sharing  
+- Links to SharePoint admin center for:
+  - Data retention settings  
+  - Default storage space  
+
