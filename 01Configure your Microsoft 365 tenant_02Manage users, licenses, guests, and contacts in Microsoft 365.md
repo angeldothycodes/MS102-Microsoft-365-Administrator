@@ -91,3 +91,120 @@ Use the table below to determine which fits your organization.
 | **Greatest Benefit** | Simple; no extra tools needed | Same Sign-In; manage identities in one place | Full SSO; manage identities in one place |
 
 
+
+# Create User Accounts in Microsoft 365
+
+Depending on an organization's needs, user accounts can be provisioned using the following methods:
+
+---
+
+## Methods for Creating User Accounts
+
+### 1. Microsoft 365 Admin Center
+A simple web interface for individually creating and managing:
+- Users  
+- Licenses  
+- Permissions  
+
+Also available as the **Microsoft 365 admin app** for mobile devices.
+
+---
+
+### 2. Import Multiple Users (CSV)
+Allows bulk import of users using a **CSV file**.
+
+---
+
+### 3. Windows PowerShell
+Use cmdlet/script-based commands to create and manage users.
+
+> **Note:**  
+> Azure AD, Azure AD Preview, and MSOnline PowerShell modules are deprecated.  
+> **Microsoft Graph PowerShell** is the module to use for Microsoft Entra ID and Microsoft 365.
+
+---
+
+### 4. Directory Synchronization
+Requires provisioning and managing users via on-premises **Active Directory**.  
+Synchronization tools:
+
+- **Microsoft Entra Connect Sync**  
+- **Microsoft Entra Cloud Sync** (does *not* support Exchange hybrid)
+
+Organizations using directory sync must create users **on-premises**, not in Microsoft 365 admin center or PowerShell.
+
+---
+
+# Creating Users with Microsoft 365 Admin Center
+
+This is the simplest method for creating one or more user accounts.
+
+### Steps:
+
+1. Sign in to **Microsoft 365 admin center**.
+2. In the left navigation, select **Users > Active users**.
+3. Select **Add a user**.
+4. On **Set up the basics**, enter user and password info. Choose the correct domain.
+5. On **Assign product licenses**, select licenses.
+6. On **Optional settings**, assign roles.
+7. On **Review and finish**, verify all information and select **Finish adding**.
+
+---
+
+# Creating Users with Import Multiple Users (CSV)
+
+### Steps:
+
+1. In **Active users**, select **Add multiple users**.
+2. Upload the CSV file.
+3. Review validation results (fix any errors shown in the log).
+4. On **Set user options**, configure:
+   - Sign-in status  
+   - Location  
+   - Licenses  
+5. On **View your results**, choose email recipients for results.  
+   > Recommended: include your own email to distribute temporary passwords.
+
+---
+
+# Creating Users with Windows PowerShell
+
+Many administrators prefer PowerShell for automation and bulk tasks.
+
+### Install Required Modules
+
+```powershell
+Install-Module Microsoft.Graph -Scope CurrentUser
+Import-Module Microsoft.Graph.Identity.DirectoryManagement
+Connect-MgGraph -Scopes 'User.ReadWrite.All'
+
+
+# Create a New User
+
+Minimum required properties must be provided, including the user’s password.
+
+Example template:
+
+$PasswordProfile = @{ Password = 'user password' }
+
+New-MgUser `
+  -UserPrincipalName username@domainname `
+  -DisplayName 'Firstname Lastname' `
+  -GivenName 'Firstname' `
+  -Surname 'Lastname' `
+  -PasswordProfile $PasswordProfile `
+  -AccountEnabled `
+  -MailNickName 'emailalias'
+
+
+Example: Create a User for Allan Deyoung:
+$PasswordProfile = @{ Password = 'User.pw1' }
+
+New-MgUser `
+  -UserPrincipalName AllanD@Adatum.onmicrosoft.com `
+  -DisplayName 'Allan Deyoung' `
+  -GivenName 'Allan' `
+  -Surname 'Deyoung' `
+  -PasswordProfile $PasswordProfile `
+  -AccountEnabled `
+  -MailNickName 'AllanD'
