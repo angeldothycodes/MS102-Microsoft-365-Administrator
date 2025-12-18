@@ -1265,3 +1265,166 @@ This prevents:
 **Example:**
 IF Defender says device is high risk
 THEN Conditional Access blocks Exchange access
+
+
+
+# Enable Microsoft Entra Pass-through Authentication  
+*(Microsoft MS-102 – Manage Secure User Access)*
+
+---
+
+## 1. First, let us clearly define the problem Microsoft is solving
+
+Most organizations today use **two environments at the same time**:
+
+### **On-premises environment**
+This means the company owns and manages its own servers inside the office or data center.  
+User accounts are stored in **Active Directory**, which is a directory service that stores:
+
+- Usernames
+- Passwords
+- Account status (enabled or disabled)
+- Password rules
+- Allowed sign-in hours
+
+### **Cloud environment (Microsoft 365)**
+This includes services like:
+
+- Outlook
+- Microsoft Teams
+- OneDrive
+- SharePoint
+
+These cloud services rely on **Microsoft Entra ID**, which is Microsoft’s cloud-based identity system.
+
+**The core challenge:**
+
+Users do not want:
+
+- One username and password for on-premises
+- Another username and password for cloud services
+
+👉 They want **one identity**.
+
+---
+
+## 2. What is Microsoft Entra Pass-through Authentication?
+
+Microsoft Entra **pass-through authentication** is a sign-in method that allows:
+
+- Users to sign in to Microsoft 365 services
+- Using their **on-premises Active Directory username and password**
+- **Without storing the password in the cloud**
+
+**Key idea:**
+> Password validation happens **on-premises**, not in Microsoft’s cloud.
+
+Microsoft Entra ID does **not** check the password itself.  
+It only passes the sign-in request through to your on-premises Active Directory.  
+
+That is why it is called **pass-through authentication**.
+
+---
+
+## 3. Why does Microsoft offer this feature?
+
+Microsoft understands that not all organizations trust cloud-based password validation.
+
+Some companies have strict security rules such as:
+
+- Immediate enforcement when a user account is disabled
+- Immediate enforcement of password changes
+- Enforcement of sign-in hours
+- Legal or regulatory requirements that passwords must never leave on-premises systems
+
+Previously, Microsoft’s solution for this was **Active Directory Federation Services (AD FS)**, which required:
+
+- Multiple servers
+- Complex certificates
+- Load balancers
+- High maintenance effort
+- High cost
+
+Many organizations found this too complex.
+
+**Microsoft’s response:**
+Pass-through authentication is:
+
+- **Simpler**
+- **Cheaper**
+- **Easier-to-maintain**
+- **Cloud-integrated**
+
+---
+
+## 4. How pass-through authentication compares to other sign-in methods
+
+| Option                              | Where password is validated | Complexity | Notes |
+|------------------------------------|-----------------------------|-----------|-------|
+| **Password hash synchronization**  | Cloud (Microsoft Entra ID) | Low       | Easier to set up, but some orgs disallow |
+| **Active Directory Federation Services** | On-premises | High | Requires multiple servers and certificates |
+| **Pass-through authentication**    | On-premises | Low | No password stored in cloud, no federation servers |
+
+👉 Microsoft strongly promotes pass-through authentication for organizations that want **on-premises control without complexity**.
+
+---
+
+## 5. Security benefits of pass-through authentication
+
+### 5.1 Reduced password-related attacks
+Because passwords are **not stored in the cloud**, this reduces the risk of:
+
+- Phishing attacks
+- Password spraying attacks
+- Cloud credential database exposure
+
+Even if an attacker steals an on-premises password, that alone is not enough.
+
+---
+
+### 5.2 Integration with Multifactor Authentication
+Multifactor authentication means:
+
+- **Something you know** (password)
+- Plus **something you have** (one-time code)
+- Or **something you are** (biometric like fingerprint)
+
+With pass-through authentication:
+
+- Password is validated on-premises
+- Additional authentication factors are enforced by Microsoft Entra ID
+
+So even if a password is compromised, the attacker still cannot sign in.
+
+---
+
+### 5.3 Conditional Access enforcement
+Conditional Access allows rules such as:
+
+- Require MFA if the user signs in from another country
+- Block access from unknown devices
+- Require compliant devices
+
+Pass-through authentication **fully supports Conditional Access**.
+
+👉 Microsoft allows on-premises password control **without losing modern cloud security features**.
+
+---
+
+## 6. Real-time authentication validation
+
+This is a very important concept.
+
+With pass-through authentication:
+
+- Every sign-in request is checked **in real time** against Active Directory
+
+If a user account is:
+
+- Disabled
+- Locked
+- Outside allowed sign-in hours access is **immediately denied**.
+
+There is **no delay waiting for synchronization**.
+
+This is one of the strongest reasons organizations choose pass-through authentication.
