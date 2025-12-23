@@ -68,3 +68,92 @@ The Microsoft Purview portal is a centralized hub for compliance and regulatory 
 - Collaboration and training  
 
 ---
+
+
+# 1. Start with the core problem Microsoft is solving
+
+Before we even talk about tools, you must understand the problem.
+
+## The real-world problem
+
+In many organizations:
+
+- Administrators are given powerful access  
+- That access is often:  
+  - Permanent  
+  - Always active  
+  - Rarely reviewed  
+
+### This creates serious risks:
+
+- If an administrator account is compromised, the attacker instantly gets full control.  
+- If a legitimate administrator makes a mistake, they can accidentally damage critical systems.  
+- Auditors and regulators cannot easily verify who had access and when.  
+
+**Microsoft’s conclusion:**  
+Too much permanent privilege is dangerous.
+
+---
+
+# 2. What is identity management? (plain explanation)
+
+**Identity management means:**
+
+- Making sure each person has only the access they need,  
+- Only when they need it,  
+- And only for as long as they need it.  
+
+**Microsoft Entra Privileged Identity Management** is a cloud-based security service that helps organizations:
+
+- Control  
+- Limit  
+- Monitor  
+- Audit  
+
+Who can use powerful administrator roles, and when they can use them.
+
+---
+
+# Microsoft built PIM to support three security principles:
+
+## 1. Principle of least privilege access
+
+This means:
+
+- Give users only the minimum permissions required to do their job.  
+
+Instead of:
+
+- Everyone being a Global Administrator  
+
+You use:
+
+- Specific administrator roles  
+- Temporary access  
+- Just-in-time activation  
+
+---
+
+## 2. Reduce standing administrator access
+
+**Standing access means:**
+
+- An administrator is always active  
+- Even when not doing administrative work  
+
+**Microsoft wants:**
+
+- Zero permanent administrators (except emergency accounts)  
+
+---
+
+## 3. Improve auditing and compliance
+
+Organizations must often prove:
+
+- Who had access  
+- When they had access  
+- Why they had access  
+- Who approved it  
+
+**PIM provides built-in audit logs for this purpose.**
