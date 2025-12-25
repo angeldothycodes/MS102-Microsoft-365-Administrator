@@ -575,3 +575,6 @@ If the question says:
 - **“Approval for sensitive task”** → Privileged Access Management  
 - **“Restrict high-risk operations”** → Privileged Access Management  
 - **“Audit admin role usage”** → Privileged Identity Management  
+
+
+A **vulnerability** is a weakness that increases attack risk.
