@@ -723,3 +723,38 @@ This is why Microsoft always requires both during tenant setup.
 **MX receives email. SPF authorizes senders.**
 
 If you remember only one thing — remember that.
+
+
+
+# Zero-hour auto purge (ZAP)
+
+## What problem is Microsoft trying to solve?
+Even with strong email filtering, some bad emails still get delivered.
+
+### Why?
+- The email looked safe at the time it was delivered
+- The link or attachment became malicious later
+- Attack patterns changed after delivery
+- New spam or malware signatures were discovered after users already received the email
+
+Microsoft’s solution to this problem is **Zero-hour auto purge**, commonly called **ZAP**.
+
+---
+
+## What is Zero-hour auto purge?
+Zero-hour auto purge is a background security feature in **Exchange Online Protection** that can go back in time and clean up dangerous email messages that were already delivered to users’ mailboxes.
+
+Think of it as:
+
+> “We already delivered the email, but now we know it’s bad — let’s remove or contain it automatically.”
+
+---
+
+## Where does ZAP work?
+ZAP works **only when mailboxes are in Exchange Online**, which means:
+- Microsoft 365 cloud mailboxes
+
+❌ ZAP does **not** work if:
+- Exchange Online Protection is only protecting on-premises Exchange servers
+
+Microsoft intentionally designed ZAP this way because it needs direct control over cloud mailboxes to move or quarantine messages.
