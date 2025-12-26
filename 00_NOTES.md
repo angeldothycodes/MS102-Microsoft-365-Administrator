@@ -612,3 +612,114 @@ A **vulnerability** is a weakness that increases attack risk.
 
 **Think:**  
 “The problem is fixed”
+
+
+
+# 1. MX record (Mail Exchange record)
+
+## What MX does
+MX tells the internet **where email should be delivered**.
+
+Think of it as:
+
+> “If someone sends an email to @yourcompany.com, which mail server should receive it?”
+
+**Simple analogy**  
+📬 MX = your office mailing address  
+If someone wants to send you a letter, they need to know where to deliver it.
+
+## What MX is used for
+- Routes incoming email
+- Points to your mail server
+- Required for email to work at all
+
+**Example (Microsoft 365)**  
+If your domain uses Exchange Online, your MX record looks like:
+
+```
+yourcompany-com.mail.protection.outlook.com
+```
+
+This means:  
+“All mail for @yourcompany.com should go to Microsoft Exchange Online (through EOP).”
+
+## Key facts about MX
+- Controls receiving email
+- Without MX → you cannot receive email
+- Does not control who can send email
+
+---
+
+# 2. SPF record (Sender Policy Framework)
+
+## What SPF does
+SPF tells the internet **who is allowed to send email on behalf of your domain**.  
+It helps stop spoofing and phishing.
+
+**Simple analogy**  
+✍️ SPF = list of authorized mail senders  
+It’s like telling the post office:  
+“Only these people are allowed to send letters using my name.”
+
+## What SPF is used for
+- Prevents attackers from pretending to send email as your domain
+- Protects against:
+  - Spoofing
+  - Phishing
+  - Fake emails
+
+**Example (Microsoft 365)**  
+An SPF record is stored as a TXT record, not MX.
+
+```
+v=spf1 include:spf.protection.outlook.com -all
+```
+
+This means:
+- `include:spf.protection.outlook.com` → Microsoft 365 is allowed to send email for your domain
+- `-all` → Everyone else is not allowed
+
+## What happens during SPF check
+When an email is sent:
+1. Receiving server checks the sender’s domain
+2. Looks up the SPF record
+3. Asks:
+   - “Is this sending server allowed?”
+   - If yes → email is accepted
+   - If no → email is marked as spam or rejected
+
+## Key facts about SPF
+- Controls sending email
+- Helps prevent spoofed emails
+- Does not route mail
+- Stored as a TXT record, not MX
+
+---
+
+# 3. Side-by-side comparison (very important for exams)
+
+| Feature            | MX record                | SPF record                     |
+|--------------------|-------------------------|--------------------------------|
+| Purpose            | Where email is delivered | Who can send email            |
+| Direction          | Inbound (receiving)    | Outbound (sending)            |
+| DNS record type    | MX                      | TXT                            |
+| Required for email | Yes                     | Strongly recommended           |
+| Prevents spoofing  | ❌ No                   | ✅ Yes                         |
+| Used by EOP        | Yes                     | Yes                            |
+
+---
+
+# 4. How Microsoft uses MX and SPF together
+In Microsoft 365 + EOP:
+- MX → Routes email into Exchange Online Protection
+- SPF → Tells other mail systems that Microsoft is allowed to send email for you
+
+This is why Microsoft always requires both during tenant setup.
+
+---
+
+# 5. Very short exam memory trick
+🧠 Remember this sentence:  
+**MX receives email. SPF authorizes senders.**
+
+If you remember only one thing — remember that.
