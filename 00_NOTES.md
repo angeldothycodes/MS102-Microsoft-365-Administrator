@@ -578,3 +578,37 @@ If the question says:
 
 
 A **vulnerability** is a weakness that increases attack risk.
+
+
+
+# Mitigation vs Remediation (Exam-Important)
+
+## Mitigation
+- **Limits damage**, but does **NOT fully fix the problem**  
+
+### Examples:
+- Block the sign-in  
+- Require Multifactor Authentication  
+
+**Key point:**
+- The risk event stays recorded  
+- The identity is not yet fully secured  
+
+**Think:**  
+“Stop the attacker for now”
+
+---
+
+## Remediation
+- **Fully secures the identity** and **closes risk events**  
+
+### Examples:
+- Secure password reset  
+- Reimage an infected device  
+
+**Key point:**
+- Risk events are closed  
+- User risk is reduced  
+
+**Think:**  
+“The problem is fixed”
