@@ -758,3 +758,27 @@ ZAP works **only when mailboxes are in Exchange Online**, which means:
 - Exchange Online Protection is only protecting on-premises Exchange servers
 
 Microsoft intentionally designed ZAP this way because it needs direct control over cloud mailboxes to move or quarantine messages.
+
+
+
+
+# What is spoofing?
+
+Spoofing means:
+
+An attacker forges the **“From” address** to make an email look like it came from someone trusted.
+
+Spoofing is usually combined with **phishing**.
+
+---
+
+## Example
+- The email claims to be from **Microsoft**
+- But it actually came from an **attacker**
+
+---
+
+## Why does Microsoft focus heavily on this?
+- Users trust sender names
+- Spoofing increases phishing success
+
