@@ -807,3 +807,30 @@ Microsoft relies on three authentication methods stored in **DNS**:
 
 Microsoft requires **authentication checks for inbound mail** and uses them heavily in **spoof detection**.
 ``
+
+
+
+# Final Exam-Ready Summary
+
+---
+
+## Zero-hour auto purge (ZAP)
+- Cleans up **bad email after delivery**
+- Works **only with Exchange Online mailboxes**
+- Handles **spam, phishing, malware, and high-confidence phishing differently**
+- Respects **allow rules**, which can weaken protection if misused
+
+---
+
+## Anti-spoofing
+- Focuses on **forged sender identities**
+- Microsoft uses:
+  - **Authentication**
+  - **Intelligence**
+  - **Policy enforcement**
+
+---
+
+## Spoofing and Phishing
+- Closely linked threats
+- Microsoft enforces **stricter controls for high-confidence attacks**
