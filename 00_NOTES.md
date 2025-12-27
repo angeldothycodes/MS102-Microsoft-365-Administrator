@@ -851,3 +851,12 @@ Microsoft requires **authentication checks for inbound mail** and uses them heav
 ---
 
 These work together like **identity verification for email domains**.
+
+
+# How all three work together (exam-critical)
+
+| Technology                                   | What it checks                                      |
+|---------------------------------------------|------------------------------------------------------|
+| **Sender Policy Framework (SPF)**          | Is the sending server allowed?                      |
+| **DomainKeys Identified Mail (DKIM)**      | Was the message altered or forged?                  |
+| **Domain-based Message Authentication, Reporting, and Conformance (DMARC)** | Do sender addresses align and what to do if they fail? |
