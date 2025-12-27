@@ -920,3 +920,15 @@ Microsoft recommends using **ALL of these together**:
 **MX = “Where mail goes”**  
 **SPF = “Who can send mail”**
 
+
+
+# What is Exchange Online Protection (EOP)?
+
+**Exchange Online Protection (EOP)** is Microsoft’s built-in cloud email security service.
+
+It protects email by:
+
+- Filtering spam
+- Detecting malware
+- Monitoring unusual sending behavior
+- Protecting Microsoft’s email server reputation
