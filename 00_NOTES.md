@@ -782,3 +782,28 @@ Spoofing is usually combined with **phishing**.
 - Users trust sender names
 - Spoofing increases phishing success
 
+
+
+# Email authentication (foundation of anti-spoofing)
+
+Microsoft relies on three authentication methods stored in **DNS**:
+
+---
+
+## 1. Sender Policy Framework (SPF)
+- Checks if the sending server is allowed to send for the domain.
+
+---
+
+## 2. DomainKeys Identified Mail (DKIM)
+- Uses **digital signatures** to verify message integrity.
+
+---
+
+## 3. Domain-based Message Authentication, Reporting, and Conformance (DMARC)
+- Tells receiving systems what to do if authentication fails.
+
+---
+
+Microsoft requires **authentication checks for inbound mail** and uses them heavily in **spoof detection**.
+``
