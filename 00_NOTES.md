@@ -860,3 +860,63 @@ These work together like **identity verification for email domains**.
 | **Sender Policy Framework (SPF)**          | Is the sending server allowed?                      |
 | **DomainKeys Identified Mail (DKIM)**      | Was the message altered or forged?                  |
 | **Domain-based Message Authentication, Reporting, and Conformance (DMARC)** | Do sender addresses align and what to do if they fail? |
+
+
+
+
+## 3. MX vs SPF — Side-by-Side Comparison
+
+| Feature                          | MX                              | SPF                                |
+|---------------------------------|--------------------------------|------------------------------------|
+| **Full name**                  | Mail Exchange                  | Sender Policy Framework           |
+| **Purpose**                    | Where email is delivered       | Who is allowed to send email      |
+| **Affects**                    | Incoming mail routing          | Sender validation                 |
+| **Prevents spam?**             | ❌ No                          | ✅ Yes (spoofing protection)      |
+| **Used by**                    | Sending mail servers           | Receiving mail servers            |
+| **Required for Microsoft 365** | ✅ Yes                         | ✅ Strongly recommended           |
+
+---
+
+## 4. How MX and SPF Work Together (Real Scenario)
+
+**Scenario:** Attacker tries to spoof your domain  
+Attacker sends email from a random server pretending to be:
+
+```
+ceo@yourdomain.com
+```
+
+**Receiving mail server checks:**
+- **MX** → Irrelevant (email is outgoing)
+- **SPF** → FAIL (server not authorized)
+
+**Result:**
+- Email is rejected or marked as phishing  
+✅ SPF blocks spoofing  
+❌ MX alone cannot  
+
+---
+
+## 5. Microsoft Best Practice (Important for Exams)
+
+Microsoft recommends using **ALL of these together**:
+
+| Technology | Purpose                     |
+|-----------|-----------------------------|
+| **MX**    | Route email to EOP          |
+| **SPF**   | Authorize senders           |
+| **DKIM**  | Prove message integrity     |
+| **DMARC** | Enforce SPF/DKIM decisions  |
+
+**Summary:**
+- MX gets mail to Microsoft  
+- SPF proves mail is allowed  
+- DKIM proves mail is untampered  
+- DMARC tells servers what to do if checks fail  
+
+---
+
+## 6. One-Sentence Exam Memory Trick
+**MX = “Where mail goes”**  
+**SPF = “Who can send mail”**
+
