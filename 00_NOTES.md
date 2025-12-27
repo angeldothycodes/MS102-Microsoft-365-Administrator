@@ -834,3 +834,20 @@ Microsoft requires **authentication checks for inbound mail** and uses them heav
 ## Spoofing and Phishing
 - Closely linked threats
 - Microsoft enforces **stricter controls for high-confidence attacks**
+
+
+
+# Microsoft recommends using all three together
+
+- **Sender Policy Framework (SPF)**
+  - Checks if the sending server is allowed to send for the domain.
+
+- **DomainKeys Identified Mail (DKIM)**
+  - Uses digital signatures to verify message integrity.
+
+- **Domain-based Message Authentication, Reporting, and Conformance (DMARC)**
+  - Tells receiving systems what to do if authentication fails.
+
+---
+
+These work together like **identity verification for email domains**.
