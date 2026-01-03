@@ -932,3 +932,27 @@ It protects email by:
 - Detecting malware
 - Monitoring unusual sending behavior
 - Protecting Microsoft’s email server reputation
+
+
+
+# What is Microsoft Defender for Cloud Apps (in simple terms)?
+
+**Microsoft Defender for Cloud Apps** is a **Cloud Access Security Broker (CASB)**.
+
+---
+
+## Cloud Access Security Broker (CASB)
+
+A CASB is a security control point that sits between users and cloud apps to:
+
+- See what cloud apps are being used
+- Monitor user behavior
+- Control what users can do with data
+- Stop risky actions in real time
+
+---
+
+### Think of Microsoft Defender for Cloud Apps as:
+
+> **“The security guard watching how users interact with cloud applications.”**
+
